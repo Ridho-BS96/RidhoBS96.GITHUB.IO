@@ -1,0 +1,286 @@
+MEMISAHKAN FILE (1)
+- SCRIPT.JS
+// Pindahkan pendefinisian class Animal ke animal.js dan hapus code dibawah
+
+// Pindahkan pendefinisian class Dog ke dog.js dan hapus code dibawah
+
+// Code dibawah jangan diganggu karena bukan bagian dari class Animal ataupun Dog
+const dog = new Dog("Leo", 4, "Chihuahua");
+dog.info();
+- ANMIAL.JS
+// Salin definisi class Animal ke bagian dibawah ini
+class Animal {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  
+  greet() {
+    console.log("Halo");
+  }
+  
+  info() {
+    this.greet();
+    console.log(`Nama saya adalah ${this.name}`);
+    console.log(`Saya berusia ${this.age} tahun`);
+  }
+}
+DOG.JS
+// Salin definisi class Dog kebagian dibawah ini
+class Dog extends Animal {
+  constructor(name, age, breed) {
+    super(name, age);
+    this.breed = breed;
+  }
+  
+  info() {
+    this.greet();
+    console.log(`Nama saya adalah ${this.name}`);
+    console.log(`Saya adalah seekor ${this.breed}`);
+    console.log(`Saya berusia ${this.age} tahun`);
+    const humanAge = this.getHumanAge();
+    console.log(`Saya berusia ${humanAge} tahun dalam umur manusia`);
+  }
+  
+  getHumanAge() {
+    return this.age * 7;
+  }
+}
+
+
+MEMISAHKAN FILE (2)
+- SCRIPT.JS
+// Import class Dog dibawah baris ini
+import Dog from "./dog";
+
+const dog = new Dog("Leo", 4, "Chihuahua");
+dog.info();
+-ANIMAL.JS
+class Animal {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  
+  greet() {
+    console.log("Halo");
+  }
+  
+  info() {
+    this.greet();
+    console.log(`Nama saya adalah ${this.name}`);
+    console.log(`Saya berusia ${this.age} tahun`);
+  }
+}
+
+// Export class Animal dibawah baris ini
+export default Animal;
+-DOG.JS
+// Import class Animal dibawah baris ini
+import Animal from "./animal";
+
+class Dog extends Animal {
+  constructor(name, age, breed) {
+    super(name, age);
+    this.breed = breed;
+  }
+
+  info() {
+    this.greet();
+    console.log(`Nama saya adalah ${this.name}`);
+    console.log(`Saya adalah seekor ${this.breed}`);
+    console.log(`Saya berusia ${this.age} tahun`);
+    const humanAge = this.getHumanAge();
+    console.log(`Saya berusia ${humanAge} tahun dalam umur manusia`);
+  }
+
+  getHumanAge() {
+    return this.age * 7;
+  }
+}
+
+// Export class Dog dibawah baris ini
+export default Dog;
+
+
+MENG EXPORT NILAI
+-dog.js
+/ Import class Animal dibawah baris ini
+import Animal from "./animal";
+
+class Dog extends Animal {
+  constructor(name, age, breed) {
+    super(name, age);
+    this.breed = breed;
+  }
+
+  info() {
+    this.greet();
+    console.log(`Nama saya adalah ${this.name}`);
+    console.log(`Saya adalah seekor ${this.breed}`);
+    console.log(`Saya berusia ${this.age} tahun`);
+    const humanAge = this.getHumanAge();
+    console.log(`Saya berusia ${humanAge} tahun dalam umur manusia`);
+  }
+
+  getHumanAge() {
+    return this.age * 7;
+  }
+}
+
+// Export class Dog dibawah baris ini
+export default Dog;
+-script.js
+// Hapus code dibawah
+
+// Hapus code diatas
+
+// Import constant dog
+import dog from "./dogData";
+
+dog.info();
+
+dog.info();
+-animal.js
+class Animal {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  greet() {
+    console.log("Halo");
+  }
+
+  info() {
+    this.greet();
+    console.log(`Nama saya adalah ${this.name}`);
+    console.log(`Saya berusia ${this.age} tahun`);
+  }
+}
+
+export default Animal;
+-dogdata.js
+class Animal {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  greet() {
+    console.log("Halo");
+  }
+
+  info() {
+    this.greet();
+    console.log(`Nama saya adalah ${this.name}`);
+    console.log(`Saya berusia ${this.age} tahun`);
+  }
+}
+
+export default Animal;
+
+
+EXPORT BERNAMA
+-SCRIPT.JS
+// Tulis ulang code dibawah and import constant dog1 dan dog2
+import { dog1, dog2 } from "./dogData";
+
+// Salin code di jendela instruksi dan tulis ulang constant dog1 dan dog2 agar dapat dicetak
+console.log("---------");
+dog1.info();
+console.log("---------");
+dog2.info();
+
+-DOGDATA.JS
+import Dog from "./dog";
+
+// Ingatlah 2 constant dog1 dan dog2 dibawah ini
+const dog1 = new Dog("Leo", 4, "Chihuahua");
+const dog2 = new Dog("Ben", 2, "Poodle");
+
+// Ubah code dibawah dan export constant dog1 dan dog2
+export { dog1, dog2 };
+
+
+JALUR RELATIF
+-SCRIPT.JS
+// Ubah jalur relatif "./dogData" 
+import { dog1, dog2 } from "./data/dogData";
+
+console.log("---------");
+dog1.info();
+console.log("---------");
+dog2.info();
+
+-DOGDATA.JS
+// Ubah jalur relatif "./dog" 
+import Dog from "../class/dog";
+
+const dog1 = new Dog("Leo", 4, "Chihuahua");
+const dog2 = new Dog("Ben", 2, "Poodle");
+
+export { dog1, dog2 };
+
+
+PAKET (1)
+-DOG.JS
+// Import paket chalk
+import chalk from "chalk";
+
+import Animal from "./animal";
+
+class Dog extends Animal {
+  constructor(name, age, breed) {
+    super(name, age);
+    this.breed = breed;
+  }
+
+  info() {
+    const humanAge = this.getHumanAge();
+    
+    this.greet();
+    // Tulis ulang konten dari console.log menggunakan chalk
+    console.log(chalk.yellow(`Nama saya adalah ${this.name}`));
+    
+    // Tulis ulang konten dari console.log menggunakan chalk
+    console.log(chalk.bgCyan(`Saya adalah seekor ${this.breed}`));
+    
+    console.log(`Saya berusia ${this.age} tahun`);
+    console.log(`Saya berusia ${humanAge} tahun dalam umur manusia`);
+  }
+  
+  getHumanAge() {
+    return this.age * 7;
+  }
+}
+
+export default Dog;
+
+
+PAKET (2)
+-DOGDATA.JS
+// Import readline-sync
+import readlineSync from "readline-sync";
+
+import Dog from "../class/dog";
+
+const dog1 = new Dog("Leo", 4, "Chihuahua");
+
+// Tulis ulang dengan menggunakan readlineSync.question
+const name = readlineSync.question("Ketik nama Anda: ");
+
+// Tulis ulang dengan menggunakan readlineSync.questionInt
+const age = readlineSync.questionInt("Ketik usia Anda: ");
+
+// Tulis ulang dengan menggunakan readlineSync.question
+const breed = readlineSync.question("Ketik ras Anda: ");
+
+const dog2 = new Dog(name, age, breed);
+
+export { dog1, dog2 };
+
+
+
+
+
